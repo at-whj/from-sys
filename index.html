@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>from-sys</title>
+  <title>From SYS</title>
   <style>
     :root {
       --bg: #f6f3ee;
@@ -12,55 +12,89 @@
       --rule: #d9d3c9;
       --accent: #b3402a;
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 18px; }
     body {
-      margin: 0;
       background: var(--bg);
       color: var(--ink);
       font-family: Georgia, 'Times New Roman', serif;
       line-height: 1.65;
+      min-height: 100vh;
+      padding: 72px 24px 48px;
     }
-    .wrap { max-width: 640px; margin: 0 auto; padding: 72px 24px 48px; }
-    header { border-bottom: 1px solid var(--rule); padding-bottom: 24px; margin-bottom: 40px; }
-    .label {
+    .wrap { max-width: 640px; margin: 0 auto; }
+    h1 {
+      font-size: 2.6rem;
+      line-height: 1.15;
+      font-weight: normal;
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--rule);
+    }
+    p { margin-bottom: 16px; }
+    strong { color: var(--accent); font-weight: normal; border-bottom: 1px solid var(--accent); }
+    .card {
+      margin-top: 40px;
+      padding: 24px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    #clock {
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+    }
+    button {
+      margin-top: 16px;
+      padding: 8px 18px;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      border-radius: 0;
+    }
+    button:hover { background: var(--ink); color: var(--bg); }
+    #msg { margin-top: 16px; margin-bottom: 0; color: var(--accent); min-height: 1.65em; }
+    footer {
+      margin-top: 48px;
       font-family: ui-monospace, Menlo, Consolas, monospace;
       font-size: 0.75rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
     }
-    h1 { font-size: 2.4rem; line-height: 1.15; font-weight: normal; margin: 12px 0 0; }
-    h2 { font-size: 1rem; font-family: ui-monospace, Menlo, Consolas, monospace; font-weight: normal; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 40px 0 8px; }
-    p { margin: 0 0 16px; }
-    a { color: var(--accent); text-underline-offset: 3px; }
-    ul { padding-left: 1.1em; margin: 0 0 16px; }
-    li { margin-bottom: 6px; }
-    footer { border-top: 1px solid var(--rule); margin-top: 56px; padding-top: 16px; font-size: 0.85rem; color: var(--muted); }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <div class="label">Repository</div>
-      <h1>from-sys</h1>
-    </header>
+    <h1>Hello from SYS 👋</h1>
+    <p>This simple website lives in the <strong>from-sys</strong> repository. Just open this file in your browser.</p>
 
-    <main>
-      <p>This is a small test project created by SYS. It exists to try out a simple workflow: create a repository, commit a page, and publish it with GitHub Pages.</p>
+    <div class="card">
+      <div id="clock">--:--:--</div>
+      <button id="greet">Say hi</button>
+      <p id="msg"></p>
+    </div>
 
-      <h2>What is here</h2>
-      <ul>
-        <li><strong>README.md</strong> &mdash; a one-line note on where the repo came from.</li>
-        <li><strong>CHANGELOG.md</strong> &mdash; a short record of changes.</li>
-        <li><strong>index.html</strong> &mdash; this page, a single file with no dependencies.</li>
-      </ul>
-
-      <h2>Source</h2>
-      <p>The code is public. <a href="https://github.com/at-whj/from-sys">View the repository on GitHub</a>.</p>
-    </main>
-
-    <footer>Created by SYS.</footer>
+    <footer>Made with SYS</footer>
   </div>
+
+  <script>
+    function tick() {
+      document.getElementById('clock').textContent = new Date().toLocaleTimeString();
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    var greetings = ['Hi there!', 'Hello, world!', 'Greetings from SYS!', 'Welcome!'];
+    document.getElementById('greet').addEventListener('click', function () {
+      var pick = greetings[Math.floor(Math.random() * greetings.length)];
+      document.getElementById('msg').textContent = pick;
+    });
+  </script>
 </body>
 </html>
